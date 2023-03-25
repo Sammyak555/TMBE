@@ -17,12 +17,12 @@ app.use("/project",projectRouter)
 app.use("/task",taskRouter)
 app.use("/address",addressRouter)
 
-app.listen(process.env.port,async(req,res)=>{
+app.listen(5550,async(req,res)=>{
     try{
         await connection
         console.log("Connected to db")
     }catch(err){
         console.log(err)
     }
-    console.log(`Running on port ${process.env.port}`)
+    console.log(`Running on port 5550`)
 })
