@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 require('dotenv').config()
 mongoose.set('strictQuery', false);
-const connection = mongoose.connect(process.env.mongoURL, {
+const connection = mongoose.connect('mongodb+srv://Sammyak555:kaymmass@cluster0.yec5n5g.mongodb.net/taskmanager?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
