@@ -1,10 +1,9 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "server":"nodemon",
+    "server": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,5 +17,15 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.8.3",
     "nodemon": "^2.0.20"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sammyak555/TMBE.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Sammyak555/TMBE/issues"
+  },
+  "homepage": "https://github.com/Sammyak555/TMBE#readme",
+  "description": ""
 }
