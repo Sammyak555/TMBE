@@ -17,7 +17,7 @@ app.use("/project",projectRouter)
 app.use("/task",taskRouter)
 app.use("/address",addressRouter)
 
-app.listen(5550,async(req,res)=>{
+app.listen(5550,async( )=>{
     try{
         await connection
         console.log("Connected to db")
