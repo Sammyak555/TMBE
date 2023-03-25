@@ -2,7 +2,6 @@ const express = require('express')
 const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 const { UserModel } = require('../Models/user.model');
-const { AdminModel } = require('../../Admin/Models/admin.model');
 const userRouter = express.Router();
 
 userRouter.use(express.json())
@@ -18,37 +17,34 @@ userRouter.get('/',async(req,res)=>{
         res.send(err.message)
     }
 })
+userRouter.get('/:id',async(req,res)=>{
+    const id = req.params.id
+    try{
+       const users = await UserModel.findById({"_id":id})
+        res.send(users)
+    }catch(err){
+        res.send(err.message)
+    }
+})
 
 userRouter.post('/register',async(req,res)=>{
-    const {name,email,phone,password} = req.body;
+    const {name,email,password} = req.body;
 
     try{
         let user=await UserModel.find({email})
-        const admin = await AdminModel.findById({"_id":"63ca91895a0eb8269540a17d"})
-        const blockperson=admin.blockeduser
-        
-       const filtper = blockperson.filter((el)=>{
-            return el.email===email
-        })
-        if(filtper.length===0){
             if(user.length===0){
                 bcrypt.hash(password, 5, async(err, hash)=> {
                     if(err){
                         console.log(err)
                     }else{
-                        const user = new UserModel({name,email,password:hash,phone})
+                        const user = new UserModel({name,email,password:hash})
                         await user.save()
                         res.send("Successfully Registered ! Please Login !!")
                     }
                 });
             }else{
                 res.send("Already Registerd ! Please Login !")
-            }
-        }else{
-            res.send("You are blocked by admin !!!")
-        }
-        
-        
+            }    
     }catch(err){
         res.send(err)
     }
